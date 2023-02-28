@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "kubernetes-api.fullname" . }}
+  labels:
+    {{- include "kubernetes-api.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "kubernetes-api.fullname" . }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "kubernetes-api.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
