@@ -1,0 +1,17 @@
+image:
+  tag: "0d6016c"
+  pullPolicy: Always
+rbac:
+  create: true  
+app:
+  greetingMessage: "stage"
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  hosts:
+    - host: stage.cch.com
+      paths:
+        - path: /api/stage(/|$)(.*)
+          pathType: Prefix

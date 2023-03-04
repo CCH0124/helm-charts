@@ -1,0 +1,17 @@
+image:
+  tag: "0d6016c"
+  pullPolicy: Always
+rbac:
+  create: true  
+app:
+  greetingMessage: "dev"
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  hosts:
+    - host: dev.cch.com
+      paths:
+        - path: /api/dev(/|$)(.*)
+          pathType: Prefix
