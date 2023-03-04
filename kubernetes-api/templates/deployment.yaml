@@ -60,6 +60,19 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /opt/config
+              name: app-config
+              readOnly: true
+      volumes:
+        - configMap:
+            defaultMode: 384
+            name: {{ include "kubernetes-api.fullname" . }}
+            optional: false
+            items:
+              - key: application.properties
+                path: application.properties
+          name: app-config
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

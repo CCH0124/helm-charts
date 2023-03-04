@@ -14,6 +14,9 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+rbac:
+  create: true
+  
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -25,13 +28,13 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext:
+  fsGroup: 0
 
 securityContext: 
-  capabilities:
-    drop:
-    - ALL
+  # capabilities:
+  #   drop:
+  #   - ALL
   readOnlyRootFilesystem: false
   runAsGroup: 0
   runAsNonRoot: true
@@ -110,3 +113,4 @@ readinessProbe:
 
 app:
   gracefulShoutDownSecond: '30'
+  greetingMessage: ""

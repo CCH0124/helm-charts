@@ -1,3 +1,10 @@
+image:
+  tag: "0d6016c"
+  pullPolicy: Always
+rbac:
+  create: true  
+app:
+  greetingMessage: "dev"
 ingress:
   enabled: true
   className: "nginx"
