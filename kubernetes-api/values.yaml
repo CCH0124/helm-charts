@@ -32,7 +32,7 @@ securityContext:
   capabilities:
     drop:
     - ALL
-  readOnlyRootFilesystem: true
+  readOnlyRootFilesystem: false
   runAsGroup: 0
   runAsNonRoot: true
   runAsUser: 1001
