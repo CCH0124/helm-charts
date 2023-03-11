@@ -23,7 +23,7 @@ spec:
           - "Accept: application/json"
           - "-H"
           - "Content-Type: application/json"
-          - "--data "
+          - "--data"
           - '{"hook": "pre-hook"}'
           - {{ $hookEndpoint }}
       restartPolicy: Never
