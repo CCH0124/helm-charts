@@ -16,3 +16,7 @@ ingress:
       paths:
         - path: /api/dev(/|$)(.*)
           pathType: Prefix
+
+hook:
+  create: true
+  endpoint: http://172.18.144.71:9090/webhook

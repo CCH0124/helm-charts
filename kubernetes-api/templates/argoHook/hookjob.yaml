@@ -1,0 +1,58 @@
+{{ if eq .Values.hook.create true }}
+{{- $hookEndpoint := .Values.hook.endpoint -}}
+{{- $fullName :=include "kubernetes-api.fullname" . -}}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ $fullName }}-prehook
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: prehook-example
+        image: curlimages/curl
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "-H"
+          - "Accept: application/json"
+          - "-H"
+          - "Content-Type: application/json"
+          - "--data "
+          - '{"hook": "pre-hook"}'
+          - {{ $hookEndpoint }}
+      restartPolicy: Never
+  backoffLimit: 1
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ $fullName }}-posthook
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: posthook-example
+        image: curlimages/curl
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "-H"
+          - "Accept: application/json"
+          - "-H"
+          - "Content-Type: application/json"
+          - "--data "
+          - '{"hook": "post-hook"}'
+          - {{ $hookEndpoint }}
+      restartPolicy: Never
+  backoffLimit: 1
+{{ end }}

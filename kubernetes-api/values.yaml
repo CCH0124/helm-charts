@@ -114,3 +114,7 @@ readinessProbe:
 app:
   gracefulShoutDownSecond: '30'
   greetingMessage: ""
+
+hook:
+  create: false
+  endpoint: 
