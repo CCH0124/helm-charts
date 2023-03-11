@@ -50,7 +50,7 @@ spec:
           - "Accept: application/json"
           - "-H"
           - "Content-Type: application/json"
-          - "--data "
+          - "--data"
           - '{"hook": "post-hook"}'
           - {{ $hookEndpoint }}
       restartPolicy: Never
