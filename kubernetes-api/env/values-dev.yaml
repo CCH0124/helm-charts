@@ -18,5 +18,5 @@ ingress:
           pathType: Prefix
 
 hook:
-  create: true
+  create: false
   endpoint: http://172.18.144.71:9090/webhook
