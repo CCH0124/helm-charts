@@ -13,5 +13,5 @@ ingress:
   hosts:
     - host: stage.cch.com
       paths:
-        - path: /api/stage(/|$)(.*)
+        - path: /api/earth/stage(/|$)(.*)
           pathType: Prefix

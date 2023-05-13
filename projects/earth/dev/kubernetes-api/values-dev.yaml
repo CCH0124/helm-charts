@@ -14,7 +14,7 @@ ingress:
   hosts:
     - host: dev.cch.com
       paths:
-        - path: /api/dev(/|$)(.*)
+        - path: /api/earth/dev(/|$)(.*)
           pathType: Prefix
 
 hook:
