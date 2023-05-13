@@ -34,4 +34,4 @@ patches:
       value: limit-team-b
     - op: replace
       path: /spec/limits/0/defaultRequest/cpu
-      value: 150m
+      value: 100m
