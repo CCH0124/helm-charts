@@ -87,6 +87,19 @@ affinity: {}
 
 lifecycle: {}
 
+# -- Volumes to add to the application pods
+extraVolumes: []
+
+# -- Volume mounts to add to the application pods
+extraVolumeMounts: []
+
+# -- Environment variables to add to the application pods
+extraEnv: []
+
+# -- Environment variables from secrets or configmaps to add to the application pods
+extraEnvFrom: []
+
+
 # -- @default http protocol and 8080 port
 ports:
   containerPort: {"http": "8080"}

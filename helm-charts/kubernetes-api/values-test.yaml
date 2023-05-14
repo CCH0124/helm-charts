@@ -5,6 +5,9 @@ rbac:
   create: true  
 app:
   greetingMessage: "dev"
+extraEnv: 
+  - name: test
+    value: test
 ingress:
   enabled: true
   className: "nginx"

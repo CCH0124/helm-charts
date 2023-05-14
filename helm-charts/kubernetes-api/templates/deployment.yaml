@@ -46,6 +46,13 @@ spec:
                   fieldPath: metadata.namespace
             - name: QUARKUS_SHUTDOWN_TIMEOUT
               value: "{{ .Values.app.gracefulShoutDownSecond | default "30" }}"
+          {{- with .Values.extraEnv }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.extraEnvFrom }}
+          envFrom:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           {{- with .Values.livenessProbe }}
           livenessProbe:
             {{- toYaml . | nindent 12 }}
@@ -64,6 +71,9 @@ spec:
             - mountPath: /opt/config
               name: app-config
               readOnly: true
+            {{- with .Values.extraVolumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
       volumes:
         - configMap:
             defaultMode: 384
@@ -73,6 +83,9 @@ spec:
               - key: application.properties
                 path: application.properties
           name: app-config
+        {{- with .Values.extraVolumes }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
