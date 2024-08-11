@@ -24,7 +24,7 @@ patches:
   patch: |-
     - op: replace
       path: /metadata/name
-      value: quota-team-a
+      value: quota-team-b
     - op: replace
       path: /spec/hard/limits.cpu
       value: 1 
