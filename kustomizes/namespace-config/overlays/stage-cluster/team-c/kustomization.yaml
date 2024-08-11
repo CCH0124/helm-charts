@@ -4,8 +4,8 @@ namePrefix: stage-
 commonLabels:
  env: stage
 commonAnnotations:
-  team: "team-b"
-namespace: team-b
+  team: "team-c"
+namespace: team-c
 
 bases:
 - ../../../base
@@ -17,21 +17,21 @@ patches:
   patch: |-
     - op: replace
       path: /metadata/name
-      value: team-b
+      value: team-c
 - target:
     kind: ResourceQuota
     name: resource-quota
   patch: |-
     - op: replace
       path: /metadata/name
-      value: quota-team-b
+      value: quota-team-c
 - target:
     kind: LimitRange
     name: limit-range
   patch: |-
     - op: replace
       path: /metadata/name
-      value: limit-team-b
+      value: limit-team-c
     - op: replace
       path: /spec/limits/0/defaultRequest/cpu
       value: 100m
