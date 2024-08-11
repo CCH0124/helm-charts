@@ -4,8 +4,8 @@ namePrefix: stage-
 commonLabels:
  env: stage
 commonAnnotations:
-  team: "team-a"
-namespace: team-a
+  team: "team-b"
+namespace: team-b
 
 bases:
 - ../../../base
@@ -17,7 +17,7 @@ patches:
   patch: |-
     - op: replace
       path: /metadata/name
-      value: team-a
+      value: team-b
 - target:
     kind: ResourceQuota
     name: resource-quota
