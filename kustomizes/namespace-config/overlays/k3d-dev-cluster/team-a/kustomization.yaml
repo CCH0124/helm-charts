@@ -4,8 +4,8 @@ namePrefix: dev-
 commonLabels:
  env: dev
 commonAnnotations:
-  team: "team-a"
-namespace: team-a
+  team: "team-c"
+namespace: team-c
 
 bases:
 - ../../../base
@@ -17,14 +17,14 @@ patches:
   patch: |-
     - op: replace
       path: /metadata/name
-      value: team-a
+      value: team-c
 - target:
     kind: ResourceQuota
     name: resource-quota
   patch: |-
     - op: replace
       path: /metadata/name
-      value: quota-team-a
+      value: quota-team-c
     - op: replace
       path: /spec/hard/limits.cpu
       value: 1 
@@ -37,4 +37,4 @@ patches:
   patch: |-
     - op: replace
       path: /metadata/name
-      value: limit-team-a
+      value: limit-team-c
